@@ -17,3 +17,33 @@ id = "JBUpiPfavQeqkg8-TSdRb"
 uri = "file://artifacts/motivational-reel/public/audio/bg_music.mp3"
 type = "audio"
 title = "background music"
+
+[[outputs]]
+id = "KN7pJpVp5d1PjUssMLw9v"
+uri = "file://artifacts/motivational-reel/public/audio/vo_ending.mp3"
+type = "audio"
+title = "ending voiceover"
+
+[[outputs]]
+id = "y1b06hSuhqRy_uvYgLClU"
+uri = "file://artifacts/motivational-reel/public/audio/vo_hook.mp3"
+type = "audio"
+title = "hook voiceover"
+
+[[outputs]]
+id = "6F0KjBG-Xhp5iRCw9l26c"
+uri = "file://artifacts/motivational-reel/public/audio/vo_main.mp3"
+type = "audio"
+title = "main voiceover"
+
+[[outputs]]
+id = "R4YhBKX6TgBqOrYbJbIX9"
+uri = "file://artifacts/motivational-reel/public/audio/vo_author.mp3"
+type = "audio"
+title = "author voiceover"
+
+[[outputs]]
+id = "Yvkn0vbN8cK3tO7p3WGct"
+uri = "file://artifacts/motivational-reel/public/audio/vo_endcard.mp3"
+type = "audio"
+title = "endCard voiceover"

@@ -1,23 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --color-primary: #D4AF37; /* Gold */
-  --color-secondary: #E5E7EB; /* Soft Silver */
-  --color-accent: #FFFFFF; /* White */
-
-  --color-bg-light: #050505; /* Black background base */
+  --color-primary: #D4AF37;
+  --color-secondary: #E5E7EB;
+  --color-accent: #FFFFFF;
+  --color-bg-light: #050505;
   --color-bg-dark: #000000;
   --color-bg-muted: #111111;
-
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #D1D5DB;
   --color-text-muted: #9CA3AF;
   --color-text-inverse: #000000;
-
-  --color-success: #10B981; /* Emerald */
-  --color-warning: #D4AF37; /* Gold */
+  --color-success: #10B981;
+  --color-warning: #D4AF37;
   --color-error: #EF4444;
-
   --font-display: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -49,14 +46,12 @@ body {
   overflow: hidden;
 }
 
-/* Custom noise overlay */
 .bg-noise {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   opacity: 0.04;
   pointer-events: none;
 }
 
-/* Text glow utilities */
 .text-glow {
   text-shadow: 0 0 40px rgba(212, 175, 55, 0.4), 0 0 10px rgba(212, 175, 55, 0.2);
 }

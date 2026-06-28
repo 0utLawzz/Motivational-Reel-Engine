@@ -26,10 +26,10 @@ const SCENE_COMPONENTS: Record<string, React.ComponentType> = {
 
 const SCENE_START_SEC: Record<string, number> = (() => {
   const out: Record<string, number> = {};
-  let cumulativeMs = 0;
-  for (const [key, ms] of Object.entries(SCENE_DURATIONS)) {
-    out[key] = cumulativeMs / 1000;
-    cumulativeMs += ms;
+  let ms = 0;
+  for (const [key, dur] of Object.entries(SCENE_DURATIONS)) {
+    out[key] = ms / 1000;
+    ms += dur;
   }
   return out;
 })();
@@ -47,24 +47,21 @@ export default function VideoTemplate({
   muted?: boolean;
   onSceneChange?: (sceneKey: string) => void;
 } = {}) {
-  const { currentScene, currentSceneKey } = useVideoPlayer({ durations, loop });
+  const { currentSceneKey } = useVideoPlayer({ durations, loop });
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    onSceneChange?.(currentSceneKey);
-  }, [currentSceneKey, onSceneChange]);
-
   const baseSceneKey = currentSceneKey.replace(/_r[12]$/, '');
-  const sceneIndex = Object.keys(SCENE_DURATIONS).indexOf(baseSceneKey);
-  const totalScenes = Object.keys(SCENE_DURATIONS).length;
+  const sceneKeys = Object.keys(SCENE_DURATIONS);
+  const sceneIndex = sceneKeys.indexOf(baseSceneKey);
+  const totalScenes = sceneKeys.length;
   const progressPercent = ((sceneIndex + 1) / totalScenes) * 100;
 
-  const SceneComponent = SCENE_COMPONENTS[baseSceneKey];
+  useEffect(() => { onSceneChange?.(currentSceneKey); }, [currentSceneKey, onSceneChange]);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.volume = 0.45;
+    audio.volume = REEL_CONFIG.audio.musicVolume;
     const targetTime = SCENE_START_SEC[baseSceneKey] ?? 0;
     if (Math.abs(audio.currentTime - targetTime) > AUDIO_SEEK_EPSILON_SEC) {
       audio.currentTime = targetTime;
@@ -72,11 +69,14 @@ export default function VideoTemplate({
     audio.play().catch(() => {});
   }, [currentSceneKey, baseSceneKey, muted]);
 
+  const SceneComponent = SCENE_COMPONENTS[baseSceneKey];
+  const fontFamily = `'${REEL_CONFIG.style.font}', sans-serif`;
+
   return (
     <div className="w-full h-screen overflow-hidden relative bg-[#050505] text-white flex justify-center">
       <audio
         ref={audioRef}
-        src={`${import.meta.env.BASE_URL}audio/bg_music.mp3`}
+        src={`${import.meta.env.BASE_URL}audio/composite_audio.mp3`}
         preload="auto"
         autoPlay
         muted={muted}
@@ -84,44 +84,48 @@ export default function VideoTemplate({
 
       <div className="relative w-full h-full max-w-[56.25vh] overflow-hidden shadow-2xl flex flex-col">
 
-        {/* Continuous Background Layer */}
-        <div className="absolute inset-0 z-0 bg-[#050505]">
+        {/* ── Background Layer ── */}
+        <div className="absolute inset-0 z-0" style={{ backgroundColor: REEL_CONFIG.style.backgroundColor }}>
+
+          {/* Static AI-generated background image */}
+          {REEL_CONFIG.style.backgroundImage && (
+            <img
+              src={`${import.meta.env.BASE_URL}${REEL_CONFIG.style.backgroundImage}`}
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover opacity-50"
+            />
+          )}
+
+          {/* Particle video layer on top of image */}
           <video
             src={`${import.meta.env.BASE_URL}videos/bg-particles.mp4`}
-            className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
-            autoPlay
-            muted
-            playsInline
-            loop
+            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen"
+            autoPlay muted playsInline loop
           />
 
+          {/* Noise texture */}
           <div className="absolute inset-0 bg-noise z-10" />
 
+          {/* Drifting gradient orbs */}
           <motion.div
-            className="absolute -top-[20%] -left-[20%] w-[140%] h-[60%] rounded-[100%] opacity-[0.15] blur-[100px] pointer-events-none"
+            className="absolute -top-[20%] -left-[20%] w-[140%] h-[60%] rounded-[100%] opacity-[0.12] blur-[100px] pointer-events-none z-20"
             style={{ background: `radial-gradient(circle, ${REEL_CONFIG.style.accentColor}, transparent 70%)` }}
-            animate={{
-              y: ['0%', '20%', '0%'],
-              x: ['0%', '10%', '-10%', '0%'],
-              scale: [1, 1.2, 0.9, 1],
-            }}
+            animate={{ y: ['0%', '20%', '0%'], x: ['0%', '10%', '-10%', '0%'], scale: [1, 1.2, 0.9, 1] }}
             transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
-            className="absolute -bottom-[10%] -right-[20%] w-[120%] h-[70%] rounded-[100%] opacity-[0.1] blur-[120px] pointer-events-none"
+            className="absolute -bottom-[10%] -right-[20%] w-[120%] h-[70%] rounded-[100%] opacity-[0.08] blur-[120px] pointer-events-none z-20"
             style={{ background: 'radial-gradient(circle, #FFFFFF, transparent 70%)' }}
-            animate={{
-              y: ['0%', '-30%', '0%'],
-              x: ['0%', '-20%', '10%', '0%'],
-              scale: [1, 1.1, 0.8, 1],
-            }}
+            animate={{ y: ['0%', '-30%', '0%'], x: ['0%', '-20%', '10%', '0%'], scale: [1, 1.1, 0.8, 1] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
 
+          {/* Floating particles */}
           {[...Array(15)].map((_, i) => (
             <motion.div
               key={`particle-${i}`}
-              className="absolute rounded-full"
+              className="absolute rounded-full z-20"
               style={{
                 width: (i % 4) + 1 + 'px',
                 height: (i % 4) + 1 + 'px',
@@ -131,23 +135,14 @@ export default function VideoTemplate({
                 opacity: 0.15 + (i % 5) * 0.07,
                 boxShadow: `0 0 ${(i % 6) + 5}px ${REEL_CONFIG.style.accentColor}`,
               }}
-              animate={{
-                y: [0, -150 - i * 15],
-                x: [0, (i % 2 === 0 ? 1 : -1) * (20 + i * 4)],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                duration: 12 + (i % 5) * 2,
-                repeat: Infinity,
-                ease: 'linear',
-                delay: -(i * 1.3),
-              }}
+              animate={{ y: [0, -150 - i * 15], x: [0, (i % 2 === 0 ? 1 : -1) * (20 + i * 4)], opacity: [0, 0.5, 0] }}
+              transition={{ duration: 12 + (i % 5) * 2, repeat: Infinity, ease: 'linear', delay: -(i * 1.3) }}
             />
           ))}
         </div>
 
-        {/* Global Progress Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-white/10 z-50">
+        {/* ── Progress Bar ── */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-white/10 z-50">
           <motion.div
             className="h-full"
             style={{ backgroundColor: REEL_CONFIG.style.accentColor }}
@@ -157,8 +152,11 @@ export default function VideoTemplate({
           />
         </div>
 
-        {/* Foreground Content */}
-        <div className="relative z-20 flex-1 flex flex-col justify-center items-center px-8">
+        {/* ── Scene Content ── */}
+        <div
+          className="relative z-20 flex-1 flex flex-col justify-center items-center px-8"
+          style={{ fontFamily }}
+        >
           <AnimatePresence mode="popLayout">
             {SceneComponent && <SceneComponent key={currentSceneKey} />}
           </AnimatePresence>
