@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "JBUpiPfavQeqkg8-TSdRb"
+uri = "file://artifacts/motivational-reel/public/audio/bg_music.mp3"
+type = "audio"
+title = "background music"

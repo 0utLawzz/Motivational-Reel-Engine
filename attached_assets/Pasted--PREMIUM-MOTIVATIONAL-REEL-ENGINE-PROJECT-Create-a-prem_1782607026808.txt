@@ -1,0 +1,336 @@
+# PREMIUM MOTIVATIONAL REEL ENGINE
+
+## PROJECT
+
+Create a premium, reusable motivational reel template for Instagram Reels, YouTube Shorts, TikTok, Facebook Reels, and YouTube Shorts.
+
+The template must be fully editable so that only the quote, author, colors, and logo need to be changed to generate a completely new reel.
+
+---
+
+## OUTPUT
+
+* Vertical 1080 × 1920 (9:16)
+* 30 FPS
+* 15–20 seconds
+* Mobile-first design
+* Professional social-media quality
+* Export-ready
+
+---
+
+## STYLE
+
+Modern luxury.
+
+Minimal.
+
+Cinematic.
+
+Elegant.
+
+Premium.
+
+Inspired by Apple keynote visuals, luxury brand advertisements, and modern motion graphics.
+
+Avoid cartoon styles.
+
+Avoid cheesy animations.
+
+Avoid clutter.
+
+Everything should feel smooth, clean, and expensive.
+
+---
+
+## COLOR PALETTE
+
+Background:
+
+* Black (#050505)
+
+Accent Colors:
+
+* Gold
+* White
+* Soft Silver
+
+Optional Accent:
+
+* Royal Blue
+* Emerald Green
+
+---
+
+## BACKGROUND
+
+Animated cinematic background with:
+
+* Floating particles
+* Soft fog
+* Light rays
+* Slow gradients
+* Depth
+* Elegant motion
+
+Never use static backgrounds.
+
+---
+
+## CAMERA
+
+Very slow cinematic movement.
+
+Use:
+
+* Push In
+* Push Out
+* Drift Left
+* Drift Right
+* Parallax movement
+
+Camera motion must be subtle.
+
+---
+
+## TYPOGRAPHY
+
+Large bold headline.
+
+Modern sans-serif fonts.
+
+Perfect spacing.
+
+Maximum readability.
+
+Soft shadows.
+
+Premium appearance.
+
+---
+
+## TEXT ANIMATION
+
+Every sentence appears with cinematic motion.
+
+Supported animations:
+
+* Fade
+* Blur Reveal
+* Mask Reveal
+* Smooth Scale
+* Letter-by-letter
+* Word-by-word
+* Slide Up
+
+Never use cheap effects.
+
+Timing should feel natural.
+
+---
+
+## QUOTE STRUCTURE
+
+Scene 1
+
+Hook
+
+Example:
+
+"The hardest battle..."
+
+Scene 2
+
+Main message
+
+"...is the one inside your own mind."
+
+Scene 3
+
+Ending
+
+"Win that battle..."
+
+Scene 4
+
+Author
+
+— Marcus Aurelius
+
+---
+
+## MUSIC
+
+Low-volume cinematic background music.
+
+Inspirational.
+
+Emotional.
+
+Modern.
+
+No vocals.
+
+---
+
+## SOUND EFFECTS
+
+Very subtle.
+
+Examples:
+
+* Whoosh
+* Air
+* Rise
+* Impact
+* Sparkle
+
+Never overpower narration.
+
+---
+
+## VOICE
+
+Optional toggle.
+
+If enabled:
+
+Natural warm motivational narrator.
+
+Male or Female.
+
+Professional pacing.
+
+Perfect pronunciation.
+
+---
+
+## SUBTITLES
+
+Auto-generated.
+
+Word highlighting while speaking.
+
+Perfect synchronization.
+
+---
+
+## PROGRESS BAR
+
+Thin animated progress indicator at the top.
+
+---
+
+## BRANDING
+
+End screen.
+
+Display:
+
+Logo
+
+Brand Name
+
+Tagline
+
+Example:
+
+Daily Wisdom
+
+Follow for more.
+
+---
+
+## END CARD
+
+Animated logo reveal.
+
+Soft glow.
+
+Call-to-action.
+
+Buttons:
+
+Follow
+
+Like
+
+Share
+
+---
+
+## UI CONTROLS (Preview Mode)
+
+Play
+
+Pause
+
+Mute
+
+Loop
+
+Replay
+
+Progress Bar
+
+Fullscreen
+
+---
+
+## TRANSITIONS
+
+Smooth.
+
+Elegant.
+
+Premium.
+
+Examples:
+
+Fade
+
+Light Sweep
+
+Blur Transition
+
+Depth Zoom
+
+Film Dissolve
+
+---
+
+## PERFORMANCE
+
+60fps-ready animations (render at 30fps if needed).
+
+Optimized for mobile.
+
+No lag.
+
+Smooth rendering.
+
+---
+
+## CONFIGURATION
+
+All of these values should be editable from a single configuration object:
+
+* Quote
+* Author
+* Logo
+* Brand Name
+* Accent Color
+* Background Style
+* Font
+* Music
+* Voice Enabled
+* Duration
+* CTA Text
+
+No code modifications should be required.
+
+---
+
+## DELIVERABLE
+
+Generate a complete reusable motivational reel template that can instantly create unlimited quote videos by changing only the configuration values while maintaining premium cinematic quality.
