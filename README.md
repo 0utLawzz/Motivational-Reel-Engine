@@ -1,43 +1,31 @@
-# Motivational-Reel-Engine
+# Motivational Reel Engine
 
-## Run & Operate
+![Social Preview](./social-preview.png)
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
-## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+## Description
+Motivational-Reel-Engine project repository, managed via automated tooling.
 
-## Where things live
+**Website (Deploy Url):** *(Insert Deploy URL here)*
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+**Topics:** motivational-reel-engine node.js automation clean
 
-## Architecture decisions
+Welcome to **Motivational-Reel-Engine**. This project was generated as part of a mass-processing script.
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+## Installation
 
-## Product
+```bash
+npm install
+# or
+yarn install
+```
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+## Usage
+Explain how to run or use the project here.
 
-## User preferences
+## Changelog
+- **2026-06-28**: Initial README generation and mass cleanup.
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
-
-## Gotchas
-
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+## Contributing
+Contributions are welcome. Please open an issue or submit a pull request.
